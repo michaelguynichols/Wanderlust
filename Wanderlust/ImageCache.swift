@@ -1,6 +1,6 @@
 //
 //  ImageCache.swift
-//  QuandlPractice
+//  Wanderlust
 //
 //  Created by Michael Nichols on 8/31/15.
 //  Copyright (c) 2015 Michael Nichols. All rights reserved.
@@ -12,8 +12,6 @@ import UIKit
 class ImageCache {
     
     private var inMemoryCache = NSCache()
-    
-    // MARK: - Retreiving images
     
     struct Caches {
         static let imageCache = ImageCache()
@@ -27,7 +25,7 @@ class ImageCache {
         }
         
         let path = pathForIdentifier(identifier!)
-        var data: NSData?
+        // var data: NSData?
         
         // First try the memory cache
         if let image = inMemoryCache.objectForKey(path) as? UIImage {
@@ -49,7 +47,10 @@ class ImageCache {
         // If the image is nil, remove images from the cache
         if image == nil {
             inMemoryCache.removeObjectForKey(path)
-            NSFileManager.defaultManager().removeItemAtPath(path, error: nil)
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath(path)
+            } catch _ {
+            }
             return
         }
         
@@ -58,14 +59,24 @@ class ImageCache {
         
         // And in documents directory
         let data = UIImagePNGRepresentation(image!)
-        data.writeToFile(path, atomically: true)
+        data!.writeToFile(path, atomically: true)
+    }
+    
+    // Explicitly delete the photo form the cache and file manager
+    func deletePhotoCache(country: Country) {
+        country.flagImage = nil
+        let path = pathForIdentifier(country.countryCode)
+        if let data = NSData(contentsOfFile: path) {
+            NSFileManager.defaultManager().delete(UIImage(data: data))
+        }
+        
     }
     
     
-    // MARK: - Helper function to get the path of the photo
+    // Helper function to get the path of the photo
     
     func pathForIdentifier(identifier: String) -> String {
-        let documentsDirectoryURL: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first as! NSURL
+        let documentsDirectoryURL: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! 
         let fullURL = documentsDirectoryURL.URLByAppendingPathComponent(identifier)
         
         return fullURL.path!

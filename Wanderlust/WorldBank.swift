@@ -1,6 +1,6 @@
 //
 //  WorldBank.swift
-//  QuandlPractice
+//  Wanderlust
 //
 //  Created by Michael Nichols on 8/29/15.
 //  Copyright (c) 2015 Michael Nichols. All rights reserved.
@@ -29,14 +29,13 @@ class WorldBank {
         return Singleton.sharedInstance
     }
     
-    
+    // Function to get Worldbank data.
     func getWBData(geoCode: String, indicator: String,  completionHandler: (result: (String, String), error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        var lowerCaseCode = geoCode.lowercaseString
+        let lowerCaseCode = geoCode.lowercaseString
         
-        var url = baseURL + "\(lowerCaseCode)/indicators/\(indicator)" + WorldBank.URLs.REST_URL
+        let url = baseURL + "\(lowerCaseCode)/indicators/\(indicator)" + WorldBank.URLs.REST_URL
         let requestURL = NSURL(string: url)
-        println(url)
         
         // Making request
         let request = NSMutableURLRequest(URL: requestURL!)
@@ -50,9 +49,9 @@ class WorldBank {
                 completionHandler(result: ("Error", "Error"), error: NSError(domain: "Download", code: 0, userInfo: [NSLocalizedDescriptionKey: "Download Error"]))
             } else {
                 //let response = NSString(data: data, encoding: NSUTF8StringEncoding)
-                if let WBData = Helper.sharedInstance().parseJSONResult(data) {
+                if let WBData = Helper.sharedInstance().parseJSONResultWB(data!) {
                     if let dataSet = WBData[1] as? [NSDictionary] {
-                        var dataValue = self.grabFirstResult(dataSet)
+                        let dataValue = self.grabFirstResult(dataSet)
                         // If data is good, send it to the completion handler.
                         completionHandler(result: dataValue, error: nil)
                     }
@@ -63,6 +62,7 @@ class WorldBank {
         return task
     }
     
+    // Helper function to get the latest data only.
     func grabFirstResult(countryData: [NSDictionary]) -> (String, String) {
         for data in countryData {
             if let dataResult = data["value"] as? String {
@@ -72,7 +72,7 @@ class WorldBank {
             }
         }
         
-        return ("No Data", "0000")
+        return ("0", "0000")
         
     }
     

@@ -8,11 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		4C3F97B51B9A710A0082E6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97B41B9A710A0082E6AE /* AppDelegate.swift */; };
-		4C3F97B71B9A710A0082E6AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97B61B9A710A0082E6AE /* ViewController.swift */; };
-		4C3F97BA1B9A710A0082E6AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F97B81B9A710A0082E6AE /* Main.storyboard */; };
 		4C3F97BC1B9A710A0082E6AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F97BB1B9A710A0082E6AE /* Images.xcassets */; };
 		4C3F97BF1B9A710A0082E6AE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F97BD1B9A710A0082E6AE /* LaunchScreen.xib */; };
 		4C3F97CB1B9A710A0082E6AE /* WanderlustTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97CA1B9A710A0082E6AE /* WanderlustTests.swift */; };
+		4C3F97D51B9A71230082E6AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F97D41B9A71230082E6AE /* Main.storyboard */; };
+		4C3F97D81B9A715C0082E6AE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97D71B9A715C0082E6AE /* CoreDataStack.swift */; };
+		4C3F97DA1B9A71670082E6AE /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97D91B9A71670082E6AE /* ImageCache.swift */; };
+		4C3F97DC1B9A716D0082E6AE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97DB1B9A716D0082E6AE /* Country.swift */; };
+		4C3F97DE1B9A717C0082E6AE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3F97DD1B9A717C0082E6AE /* MapKit.framework */; };
+		4C3F97E11B9A719D0082E6AE /* Wiki.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97E01B9A719D0082E6AE /* Wiki.swift */; };
+		4C3F97E31B9A71A30082E6AE /* WikiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97E21B9A71A30082E6AE /* WikiConstants.swift */; };
+		4C3F97E61B9A71B90082E6AE /* WorldBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97E51B9A71B90082E6AE /* WorldBank.swift */; };
+		4C3F97E81B9A71BE0082E6AE /* WBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97E71B9A71BE0082E6AE /* WBConstants.swift */; };
+		4C3F97EA1B9A71C30082E6AE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97E91B9A71C30082E6AE /* Helper.swift */; };
+		4C3F97ED1B9A71D90082E6AE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97EC1B9A71D90082E6AE /* MapViewController.swift */; };
+		4C3F97EF1B9A71DE0082E6AE /* DataPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97EE1B9A71DE0082E6AE /* DataPickerController.swift */; };
+		4C3F97F11B9A71E30082E6AE /* WikiWebview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F97F01B9A71E30082E6AE /* WikiWebview.swift */; };
+		4C775C121BAF915D002489BD /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775C111BAF915D002489BD /* Connectivity.swift */; settings = {ASSET_TAGS = (); }; };
+		4CE432801B9A7435008FFAB2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CE4327E1B9A7435008FFAB2 /* Model.xcdatamodeld */; };
+		4CE432821BA3A553008FFAB2 /* CountriesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE432811BA3A553008FFAB2 /* CountriesTableVC.swift */; };
+		4CE432851BA3A7A3008FFAB2 /* CountryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE432841BA3A7A3008FFAB2 /* CountryTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +44,28 @@
 		4C3F97AF1B9A710A0082E6AE /* Wanderlust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wanderlust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3F97B31B9A710A0082E6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C3F97B41B9A710A0082E6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C3F97B61B9A710A0082E6AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4C3F97B91B9A710A0082E6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C3F97BB1B9A710A0082E6AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C3F97BE1B9A710A0082E6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4C3F97C41B9A710A0082E6AE /* WanderlustTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WanderlustTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3F97C91B9A710A0082E6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C3F97CA1B9A710A0082E6AE /* WanderlustTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderlustTests.swift; sourceTree = "<group>"; };
+		4C3F97D41B9A71230082E6AE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4C3F97D71B9A715C0082E6AE /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		4C3F97D91B9A71670082E6AE /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		4C3F97DB1B9A716D0082E6AE /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		4C3F97DD1B9A717C0082E6AE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4C3F97E01B9A719D0082E6AE /* Wiki.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wiki.swift; sourceTree = "<group>"; };
+		4C3F97E21B9A71A30082E6AE /* WikiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiConstants.swift; sourceTree = "<group>"; };
+		4C3F97E51B9A71B90082E6AE /* WorldBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldBank.swift; sourceTree = "<group>"; };
+		4C3F97E71B9A71BE0082E6AE /* WBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBConstants.swift; sourceTree = "<group>"; };
+		4C3F97E91B9A71C30082E6AE /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		4C3F97EC1B9A71D90082E6AE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4C3F97EE1B9A71DE0082E6AE /* DataPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPickerController.swift; sourceTree = "<group>"; };
+		4C3F97F01B9A71E30082E6AE /* WikiWebview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiWebview.swift; sourceTree = "<group>"; };
+		4C775C111BAF915D002489BD /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		4CE4327F1B9A7435008FFAB2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4CE432811BA3A553008FFAB2 /* CountriesTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesTableVC.swift; sourceTree = "<group>"; };
+		4CE432841BA3A7A3008FFAB2 /* CountryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3F97DE1B9A717C0082E6AE /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +90,7 @@
 		4C3F97A61B9A710A0082E6AE = {
 			isa = PBXGroup;
 			children = (
+				4C3F97DD1B9A717C0082E6AE /* MapKit.framework */,
 				4C3F97B11B9A710A0082E6AE /* Wanderlust */,
 				4C3F97C71B9A710A0082E6AE /* WanderlustTests */,
 				4C3F97B01B9A710A0082E6AE /* Products */,
@@ -77,11 +109,15 @@
 		4C3F97B11B9A710A0082E6AE /* Wanderlust */ = {
 			isa = PBXGroup;
 			children = (
+				4C3F97D61B9A714E0082E6AE /* Model */,
+				4C3F97DF1B9A71850082E6AE /* WikiAPI */,
+				4C3F97E41B9A71A80082E6AE /* WorldBankAPI */,
+				4C3F97EB1B9A71CD0082E6AE /* Controllers */,
+				4CE432831BA3A78E008FFAB2 /* View */,
 				4C3F97B41B9A710A0082E6AE /* AppDelegate.swift */,
-				4C3F97B61B9A710A0082E6AE /* ViewController.swift */,
-				4C3F97B81B9A710A0082E6AE /* Main.storyboard */,
 				4C3F97BB1B9A710A0082E6AE /* Images.xcassets */,
 				4C3F97BD1B9A710A0082E6AE /* LaunchScreen.xib */,
+				4C3F97D41B9A71230082E6AE /* Main.storyboard */,
 				4C3F97B21B9A710A0082E6AE /* Supporting Files */,
 			);
 			path = Wanderlust;
@@ -110,6 +146,56 @@
 				4C3F97C91B9A710A0082E6AE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C3F97D61B9A714E0082E6AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C3F97D71B9A715C0082E6AE /* CoreDataStack.swift */,
+				4C3F97D91B9A71670082E6AE /* ImageCache.swift */,
+				4C3F97DB1B9A716D0082E6AE /* Country.swift */,
+				4CE4327E1B9A7435008FFAB2 /* Model.xcdatamodeld */,
+				4C775C111BAF915D002489BD /* Connectivity.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4C3F97DF1B9A71850082E6AE /* WikiAPI */ = {
+			isa = PBXGroup;
+			children = (
+				4C3F97E01B9A719D0082E6AE /* Wiki.swift */,
+				4C3F97E21B9A71A30082E6AE /* WikiConstants.swift */,
+			);
+			name = WikiAPI;
+			sourceTree = "<group>";
+		};
+		4C3F97E41B9A71A80082E6AE /* WorldBankAPI */ = {
+			isa = PBXGroup;
+			children = (
+				4C3F97E51B9A71B90082E6AE /* WorldBank.swift */,
+				4C3F97E71B9A71BE0082E6AE /* WBConstants.swift */,
+				4C3F97E91B9A71C30082E6AE /* Helper.swift */,
+			);
+			name = WorldBankAPI;
+			sourceTree = "<group>";
+		};
+		4C3F97EB1B9A71CD0082E6AE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C3F97EC1B9A71D90082E6AE /* MapViewController.swift */,
+				4C3F97EE1B9A71DE0082E6AE /* DataPickerController.swift */,
+				4C3F97F01B9A71E30082E6AE /* WikiWebview.swift */,
+				4CE432811BA3A553008FFAB2 /* CountriesTableVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4CE432831BA3A78E008FFAB2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4CE432841BA3A7A3008FFAB2 /* CountryTableCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,11 +242,18 @@
 		4C3F97A71B9A710A0082E6AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Michael Nichols";
 				TargetAttributes = {
 					4C3F97AE1B9A710A0082E6AE = {
 						CreatedOnToolsVersion = 6.4;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					4C3F97C31B9A710A0082E6AE = {
 						CreatedOnToolsVersion = 6.4;
@@ -192,7 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C3F97BA1B9A710A0082E6AE /* Main.storyboard in Resources */,
+				4C3F97D51B9A71230082E6AE /* Main.storyboard in Resources */,
 				4C3F97BF1B9A710A0082E6AE /* LaunchScreen.xib in Resources */,
 				4C3F97BC1B9A710A0082E6AE /* Images.xcassets in Resources */,
 			);
@@ -212,8 +305,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C3F97B71B9A710A0082E6AE /* ViewController.swift in Sources */,
+				4CE432851BA3A7A3008FFAB2 /* CountryTableCell.swift in Sources */,
+				4C3F97E61B9A71B90082E6AE /* WorldBank.swift in Sources */,
+				4CE432801B9A7435008FFAB2 /* Model.xcdatamodeld in Sources */,
+				4C3F97DC1B9A716D0082E6AE /* Country.swift in Sources */,
+				4C3F97E81B9A71BE0082E6AE /* WBConstants.swift in Sources */,
+				4C3F97ED1B9A71D90082E6AE /* MapViewController.swift in Sources */,
+				4C3F97E11B9A719D0082E6AE /* Wiki.swift in Sources */,
+				4C3F97F11B9A71E30082E6AE /* WikiWebview.swift in Sources */,
+				4C3F97EF1B9A71DE0082E6AE /* DataPickerController.swift in Sources */,
+				4C3F97DA1B9A71670082E6AE /* ImageCache.swift in Sources */,
+				4C3F97EA1B9A71C30082E6AE /* Helper.swift in Sources */,
+				4C3F97E31B9A71A30082E6AE /* WikiConstants.swift in Sources */,
+				4C775C121BAF915D002489BD /* Connectivity.swift in Sources */,
 				4C3F97B51B9A710A0082E6AE /* AppDelegate.swift in Sources */,
+				4CE432821BA3A553008FFAB2 /* CountriesTableVC.swift in Sources */,
+				4C3F97D81B9A715C0082E6AE /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,14 +343,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4C3F97B81B9A710A0082E6AE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4C3F97B91B9A710A0082E6AE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4C3F97BD1B9A710A0082E6AE /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -276,6 +375,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -291,6 +391,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -342,6 +443,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Wanderlust/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelnichols.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -352,6 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Wanderlust/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelnichols.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -360,16 +463,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WanderlustTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelnichols.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wanderlust.app/Wanderlust";
 			};
@@ -379,12 +479,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = WanderlustTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.michaelnichols.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wanderlust.app/Wanderlust";
 			};
@@ -409,6 +506,7 @@
 				4C3F97D01B9A710A0082E6AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C3F97D11B9A710A0082E6AE /* Build configuration list for PBXNativeTarget "WanderlustTests" */ = {
 			isa = XCConfigurationList;
@@ -417,8 +515,22 @@
 				4C3F97D31B9A710A0082E6AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4CE4327E1B9A7435008FFAB2 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4CE4327F1B9A7435008FFAB2 /* Model.xcdatamodel */,
+			);
+			currentVersion = 4CE4327F1B9A7435008FFAB2 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4C3F97A71B9A710A0082E6AE /* Project object */;
 }

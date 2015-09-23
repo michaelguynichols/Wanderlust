@@ -1,6 +1,6 @@
 //
 //  Helper.swift
-//  QuandlPractice
+//  Wanderlust
 //
 //  Created by Michael Nichols on 8/27/15.
 //  Copyright (c) 2015 Michael Nichols. All rights reserved.
@@ -19,27 +19,42 @@ class Helper {
         return Singleton.sharedInstance
     }
     
-    // Helper function to parse JSON data.
-    func parseJSONResult(data: NSData) -> NSDictionary?  {
-        var parsingError: NSError? = nil
-        if let parsedResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as? NSDictionary {
+    // Helper function to parse JSON data from Wikipedia.
+    func parseJSONResultWiki(data: NSData) -> NSDictionary?  {
+        let parsedResult: NSDictionary?
+        do {
+            parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
             return parsedResult
-        } else {
+        } catch _ {
             let emptyDict = NSDictionary()
             return emptyDict
         }
     }
     
+    // Helper function to parse JSON data from Worldbank.
+    func parseJSONResultWB(data: NSData) -> NSArray?  {
+        let parsedResult: NSArray?
+        do {
+            parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as? NSArray
+            return parsedResult
+        } catch _ {
+            let emptyDict = NSArray()
+            return emptyDict
+        }
+    }
+    
+    // Helper function to determine whether a country is in the dictionary
     func inDictionary(country: String, dictionary: NSDictionary) -> Bool {
-        var compareKeys = dictionary.allKeys as! [String]
-        if contains(compareKeys, country) {
+        let compareKeys = dictionary.allKeys as! [String]
+        if compareKeys.contains(country) {
             return true
         } else {
             return false
         }
     }
     
-    func formatResult(type: String, result: String) -> String {
+    // Helper function to format data results.
+    func formatResult(type: String, result: String) -> String? {
         switch (type) {
             case "GDP per Capita":
                 return "$" + commaDelimit(twoDecFormat(type, result: result))
@@ -81,11 +96,12 @@ class Helper {
         }
     }
 
+    // Helper function to add proper commas to data.
     func commaDelimit(result: String) -> String {
         var count = 0
         var returnString = String()
-        var chopped = chopOffDecimal(result)
-        var reversedString = lazy(chopped).reverse()
+        let chopped = chopOffDecimal(result)
+        let reversedString = chopped.characters.reverse()
         
         for num in reversedString {
             count++
@@ -96,34 +112,33 @@ class Helper {
             }
         }
         
-        return String(lazy(returnString).reverse())
+        return String(returnString.characters.reverse())
         
     }
     
+    // Formatting data with decimals.
     func twoDecFormat(type: String, result: String) -> String {
         if type == "GDP per Capita" {
-            var doubleString = (result as NSString).doubleValue
-            var str = NSString(format: "%.0f", doubleString)
+            let doubleString = (result as NSString).doubleValue
+            let str = NSString(format: "%.0f", doubleString)
             return str as String
         } else {
-            var doubleString = (result as NSString).doubleValue
-            var str = NSString(format: "%.2f", doubleString)
+            let doubleString = (result as NSString).doubleValue
+            let str = NSString(format: "%.2f", doubleString)
             return str as String
         }
     }
     
+    // Grabbing number of letters in string.
     func numLetters(str: String) -> Int {
-        var num: Int = 0
-        for letter in str {
-            num++
-        }
-        return num
+        return str.characters.count
     }
     
+    // Grabbing the year in a date.
     func pullYearFromDate(date: String) -> String {
         var count = 0
         var newDate = String()
-        for digit in date {
+        for digit in date.characters {
             if count <= 3 {
                 newDate += String(digit)
             }
@@ -132,27 +147,10 @@ class Helper {
         return newDate
     }
     
-    func createPinterestSearch(country: String) -> String {
-        
-        var formattedCountry = String()
-        
-        for letter in country {
-            if letter == " " {
-                formattedCountry += "+"
-            } else {
-                formattedCountry += String(letter)
-            }
-        }
-        
-        var URL = "https://www.pinterest.com/search/pins/?q=\(formattedCountry)+food"
-        
-        return URL
-        
-    }
-    
+    // Getting rid of decimals when unnecessary.
     func chopOffDecimal(result: String) -> String {
         var final = String()
-        for letter in result {
+        for letter in result.characters {
             if letter != "." {
                 final += String(letter)
             } else {

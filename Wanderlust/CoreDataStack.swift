@@ -1,6 +1,6 @@
 //
 //  CoreDataStack.swift
-//  QuandlPractice
+//  Wanderlust
 //
 //  Created by Michael Nichols on 8/31/15.
 //  Copyright (c) 2015 Michael Nichols. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-private let SQLITE_FILE_NAME = "Cosmopolitan.sqlite"
+private let SQLITE_FILE_NAME = "Wanderlust.sqlite"
 
 class CoreDataStack {
     
@@ -24,7 +24,7 @@ class CoreDataStack {
     lazy var applicationDocumentsDirectory: NSURL = {
         
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -37,21 +37,13 @@ class CoreDataStack {
         
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(SQLITE_FILE_NAME)
-        
         var error: NSError? = nil
         
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
-            coordinator = nil
-            // Report any error we got.
-            let dict = NSMutableDictionary()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = "There was an error creating or loading the application's saved data."
-            dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
+        do {
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription)
             
-            // Left in for development development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()
         }
         
         return coordinator
@@ -69,13 +61,14 @@ class CoreDataStack {
         }()
     
     func saveContext () {
-        
-        if let context = self.managedObjectContext {
-            
-            var error: NSError? = nil
-            
-            if context.hasChanges && !context.save(&error) {
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
+        if managedObjectContext!.hasChanges {
+            do {
+                try managedObjectContext!.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
             }
         }

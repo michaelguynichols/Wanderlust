@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+    <entity name="Country" representedClassName="Country" syncable="YES">
+        <attribute name="co2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="co2Date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="forestArea" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="forestAreaDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gdpAnnualGrowth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gdpAnnualGrowthDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gdpPerCapita" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gdpPerCapitaDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gdpTotal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gdpTotalDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inflation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inflationDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="laborForce" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="laborForceDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lendingRate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lendingRateDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lifeExpectancy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lifeExpectancyDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="marketCapitalization" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="marketCapitalizationDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="population" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="populationDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="populationGrowth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="populationGrowthDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rdDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ruralPopulation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ruralPopulationDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taxRate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taxRateDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unemploymentRate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unemploymentRateDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urbanPopulation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urbanPopulationDate" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Country" positionX="-63" positionY="-18" width="128" height="585"/>
+    </elements>
 </model>
