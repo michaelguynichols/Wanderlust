@@ -41,11 +41,6 @@ class CountriesTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         // Changing the separator color
         tableView.separatorColor = UIColor.init(red: 59/256, green: 139/256, blue: 148/256, alpha: 1.0)
         
-        // Changing the color of the edit button
-        let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = editButton
-        editButton.tintColor = UIColor.blackColor()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
