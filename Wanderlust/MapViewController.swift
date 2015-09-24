@@ -17,14 +17,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var map: MKMapView!
     var countryNames: [String]!
     var countryToPass: Country!
-    var networkAccess = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         map.delegate = self
-        
-        networkAccess = Connectivity.isConnectedToNetwork()
         
         // Gesture recognizer and assign locateCountry method to it
         let longTapAndHoldGesture = UILongPressGestureRecognizer(target: self, action: "locateCountry:")
@@ -57,7 +54,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let location = CLLocation(latitude: latitude, longitude: longitude) //changed!!!
         
         // Check for network access before allowing data call to Worldbank API.
-        if networkAccess {
+        if Connectivity.isConnectedToNetwork() {
         
             geocoder.reverseGeocodeLocation(location) {(placemarks, error) -> Void in
 
@@ -92,43 +89,52 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // A function to locate the country on the map if a long tap and hold occurs
     func locateCountry(gesture: UIGestureRecognizer) {
         
-        if gesture.state == .Began {
+        if Connectivity.isConnectedToNetwork() {
+            if gesture.state == .Began {
             
-            // Grabbing coords
-            let point = gesture.locationInView(map)
-            let locCoord = map.convertPoint(point, toCoordinateFromView: map)
+                // Grabbing coords
+                let point = gesture.locationInView(map)
+                let locCoord = map.convertPoint(point, toCoordinateFromView: map)
             
-            reverseLocate(locCoord.latitude, lon: locCoord.longitude) {result, error in
+                reverseLocate(locCoord.latitude, lon: locCoord.longitude) {result, error in
             
-                if let newCountry = result as? String {
-                    if Helper.sharedInstance().inDictionary(newCountry, dictionary: WorldBank.COUNTRIES.DATA) {
-                        // Create the country if not already a saved country - otherwise, move to the data view.
-                        if !self.countrySaved(newCountry) {
-                            let country = Country(name: newCountry, context: self.sharedContext)
-                            self.saveContext()
-                            self.createAppDelegateObject(country)
+                    if let newCountry = result as? String {
+                        if Helper.sharedInstance().inDictionary(newCountry, dictionary: WorldBank.COUNTRIES.DATA) {
+                            // Create the country if not already a saved country - otherwise, move to the data view.
+                            if !self.countrySaved(newCountry) {
+                                let country = Country(name: newCountry, context: self.sharedContext)
+                                self.saveContext()
+                                self.createAppDelegateObject(country)
+                            } else {
+                                let country = self.countryToPass
+                                self.createAppDelegateObject(country)
+                            }
+                            self.toPickerView()
                         } else {
-                            let country = self.countryToPass
-                            self.createAppDelegateObject(country)
-                        }
-                        self.toPickerView()
-                    } else {
-                        let alert = UIAlertController(title: newCountry, message: "The tapped item was not a country. Please tap and hold on a country.", preferredStyle: .Alert)
+                            let alert = UIAlertController(title: newCountry, message: "The tapped item was not a country. Please tap and hold on a country.", preferredStyle: .Alert)
                         
+                            let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
+                            alert.addAction(cancel)
+                        
+                            self.presentViewController(alert, animated: true, completion: nil)
+                        }
+                    } else {
+                        let alert = UIAlertController(title: "Download Error", message: "The download failed.", preferredStyle: .Alert)
+                    
                         let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
                         alert.addAction(cancel)
-                        
+                    
                         self.presentViewController(alert, animated: true, completion: nil)
                     }
-                } else {
-                    let alert = UIAlertController(title: "Download Error", message: "The download failed.", preferredStyle: .Alert)
-                    
-                    let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
-                    alert.addAction(cancel)
-                    
-                    self.presentViewController(alert, animated: true, completion: nil)
                 }
             }
+        } else {
+            let alert = UIAlertController(title: "No Network Access", message: "To obtain data from the Worldbank, you need to have a network connection. Please connect to a network and try again.", preferredStyle: .Alert)
+            
+            let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
+            alert.addAction(cancel)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
     }

@@ -71,11 +71,11 @@ class Country: NSManagedObject {
     var flagImage: UIImage? {
         // getter and setter to handle putting new images in the cache and calling those already in it
         get {
-            return Wiki.Caches.imageCache.imageWithIdentifier(countryCode)
+            return Wiki.Caches.imageCache.imageWithIdentifier(countryName)
         }
         
         set {
-            Wiki.Caches.imageCache.storeImage(newValue, withIdentifier: countryCode)
+            Wiki.Caches.imageCache.storeImage(newValue, withIdentifier: countryName)
         }
     }
     
