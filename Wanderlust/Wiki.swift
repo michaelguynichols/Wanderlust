@@ -98,11 +98,10 @@ class Wiki {
 
         if country == "Saint Barthélemy" {
             joinedCountryName = "Saint_Barthelemy"
-        } else if country == "Reunion" {
-            joinedCountryName = "Réunion"
         }
         
         return Wiki.URLs.WIKI_URL + joinedCountryName
+    
     }
     
     
@@ -132,7 +131,7 @@ class Wiki {
         } else if country == "Saint Barthélemy" {
             joinedCountryName = "Saint%20Barthelemy"
         } else if country == "Reunion" {
-            joinedCountryName = "Réunion"
+            joinedCountryName = "France"
         }
         
         return joinedCountryName

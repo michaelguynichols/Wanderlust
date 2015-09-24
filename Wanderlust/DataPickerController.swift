@@ -41,36 +41,12 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
         let appDelegate = object as! AppDelegate
         country = appDelegate.pickedCountry!
         
-        // Setting country name
+        // Setting country name and capital.
         countryLabel.text = country!.countryName
-        
-        // If there is an image cached, grab it. Otherwise, fetch from Wikipedia.
-        if let image = country?.flagImage {
-            countryFlag.image = image
-        } else {
-            getFlagPhotoFromWiki()
-        }
-        
-        // Setting the initial text to display
         queryResult.text = WorldBank.COUNTRIES.DATA[country!.countryName]!["Capital"]!
         
-        // If there is data, load it. Otherwise, to get it from Worldbank
-        if let _ = country!.population {
-            country!.buildCountryData()
-        } else {
-            if networkAccess {
-                getDataFromWorldBank()
-            } else {
-                let alert = UIAlertController(title: "No Network Access", message: "To obtain data from the Worldbank, you need to have a network connection. Please connect to a network and try again.", preferredStyle: .Alert)
-                
-                let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
-                alert.addAction(cancel)
-                
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
-        }
-        
-        
+        // Preparing flag image and country data.
+        prepareData()
     }
     
     // Hiding the status bar
@@ -94,22 +70,29 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
         
         let picked = pickerData[row]
         
+        queryResult.textColor = UIColor.whiteColor()
+        
         // If picked is manual data, grab it. Otherwise, grab from saved data.
         switch (picked) {
             case "Religion":
-                self.queryResult.text = WorldBank.COUNTRIES.DATA[country!.countryName]!["Religion"]!
+                queryResult.text = WorldBank.COUNTRIES.DATA[country!.countryName]!["Religion"]!
             case "Language":
-                self.queryResult.text = WorldBank.COUNTRIES.DATA[country!.countryName]!["Language"]!
+                queryResult.text = WorldBank.COUNTRIES.DATA[country!.countryName]!["Language"]!
             case "Capital":
-                self.queryResult.text = WorldBank.COUNTRIES.DATA[country!.countryName]!["Capital"]!
+                queryResult.text = WorldBank.COUNTRIES.DATA[country!.countryName]!["Capital"]!
             case "Currency":
                 self.queryResult.text = WorldBank.COUNTRIES.DATA[country!.countryName]!["Currency"]!
             default:
-                let dataResult = country!.countryData[picked]!
-                queryResult.text = Helper.sharedInstance().formatResult(picked, result: dataResult.0)!
-                yearOfData.text = "Data as of \(dataResult.1)"
-            
-            }
+                // Checking to see if the data has been downloaded. If not, let user know.
+                if let dataResult = country!.countryData[picked] {
+                    queryResult.textColor = UIColor.whiteColor()
+                    queryResult.text = Helper.sharedInstance().formatResult(picked, result: dataResult.0)!
+                    yearOfData.text = "Data as of \(dataResult.1)"
+                } else {
+                    queryResult.textColor = UIColor.yellowColor()
+                    queryResult.text = "Downloading data"
+                }
+        }
         
     }
     
@@ -121,18 +104,13 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
     }
     
     // Helper function to grab country flag photo from Wikipedia and cache it.
-    func getFlagPhotoFromWiki() {
+    func getFlagPhotoFromWiki(completionHandler: (result: UIImage?, error: NSError?, success: Bool) -> Void) {
         if let country = country {
             Wiki.sharedInstance().getWikiData(country.countryName) {result, error in
-            
-                if let error = error {
-                    print(error)
+                if let _ = error {
+                    completionHandler(result: nil, error: NSError(domain: "Download", code: 0, userInfo: [NSLocalizedDescriptionKey: "Image Download Error"]), success: false)
                 } else {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.countryFlag.image = result as? UIImage
-                        self.country?.flagImage = result as? UIImage
-                        self.saveContext()
-                    }
+                    completionHandler(result: result as? UIImage, error: nil, success: true)
                 }
             }
         }
@@ -140,18 +118,19 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
     
     // Helper function to grab all data and all indicators from Worldbank.
     func getDataFromWorldBank() {
-        activity.hidden = false
-        queryResult.hidden = true
-        activity.startAnimating()
         for indicator in WorldBank.INDICATORS.QUERY_CHOICES {
             if indicator != "Language" && indicator != "Religion" && indicator != "Currency" && indicator != "Capital" {
                 let chosenIndicator = WorldBank.INDICATORS.QUERY_DICTIONARY[indicator]
                 
                 WorldBank.sharedInstance().getWBData(country!.countryCode, indicator: chosenIndicator!) { JSONResult, error in
-                    if let error = error {
-                        print(error)
+                    if let _ = error {
+                        let alert = UIAlertController(title: "Data Download Error", message: "The data did not download properly. Please try again later.", preferredStyle: .Alert)
+                        
+                        let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
+                        alert.addAction(cancel)
+                        
+                        self.presentViewController(alert, animated: true, completion: nil)
                     } else {
-                        _ = Helper.sharedInstance().formatResult(indicator, result: JSONResult.0)
                         dispatch_async(dispatch_get_main_queue()) {
                             self.country?.addToCountryData(indicator, result: JSONResult)
                             self.saveContext()
@@ -160,9 +139,50 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
                 }
             }
         }
-        activity.stopAnimating()
-        activity.hidden = true
-        queryResult.hidden = false
+        
+    }
+    
+    // A function to set up data (flag and Worldbank data).
+    func prepareData() {
+        // If there is an image cached, grab it. Otherwise, fetch from Wikipedia.
+        if let image = country?.flagImage {
+            countryFlag.image = image
+        } else {
+            activity.hidden = false
+            activity.startAnimating()
+            getFlagPhotoFromWiki() {result, error, success in
+                if success == true {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.countryFlag.image = result
+                        self.country?.flagImage = result
+                        self.saveContext()
+                        
+                        self.activity.stopAnimating()
+                        self.activity.hidden = true
+                    }
+                }
+            }
+        }
+        
+        // If there is data, load it. Otherwise, to get it from Worldbank
+        if let _ = country!.population {
+            country!.buildCountryData()
+            
+            // Setting the initial text to display
+            queryResult.text = WorldBank.COUNTRIES.DATA[self.country!.countryName]!["Capital"]!
+            
+        } else {
+            if networkAccess {
+                getDataFromWorldBank()
+            } else {
+                let alert = UIAlertController(title: "No Network Access", message: "To obtain data from the Worldbank, you need to have a network connection. Please connect to a network and try again.", preferredStyle: .Alert)
+                
+                let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
+                alert.addAction(cancel)
+                
+                presentViewController(alert, animated: true, completion: nil)
+            }
+        }
 
     }
     
@@ -199,9 +219,7 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
     
     // Segue to wiki webview.
     @IBAction func toWiki(sender: UIButton) {
-    
         self.performSegueWithIdentifier("toWikiVC", sender: self)
-        
     }
     
     // Refresh data from Worldbank.
@@ -211,6 +229,6 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
     }
     
     @IBAction func dismissView(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

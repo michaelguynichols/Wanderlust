@@ -24,7 +24,7 @@ class WikiWebview: UIViewController {
     }
     
     @IBAction func dismissView(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Hiding the status bar

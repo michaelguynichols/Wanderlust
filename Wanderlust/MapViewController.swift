@@ -34,7 +34,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Hiding the navbar
         navigationController?.navigationBarHidden = true
         
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -136,7 +135,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Helper function to push the view to the DataPickerVC
     func toPickerView() {
-        self.performSegueWithIdentifier("toDataVC", sender: self)
+        performSegueWithIdentifier("toDataVC", sender: self)
     }
     
     // Helper property to access CoreDataStack

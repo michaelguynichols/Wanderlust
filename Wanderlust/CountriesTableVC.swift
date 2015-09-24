@@ -20,7 +20,7 @@ class CountriesTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         super.viewDidLoad()
         
         // Creating edit button
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.rightBarButtonItem = editButtonItem()
         
         do {
             // Performing the fetch
@@ -32,7 +32,7 @@ class CountriesTableVC: UITableViewController, NSFetchedResultsControllerDelegat
             let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
             alert.addAction(cancel)
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
         }
         
         // Set the delegate to this view controller
@@ -159,13 +159,12 @@ class CountriesTableVC: UITableViewController, NSFetchedResultsControllerDelegat
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.endUpdates()
+        tableView.endUpdates()
     }
     
     // Helper function to push the view to the DataPickerController
     func toPickerView() {
-        
-        self.performSegueWithIdentifier("fromTableToDataVC", sender: self)
+        performSegueWithIdentifier("fromTableToDataVC", sender: self)
     }
     
 }

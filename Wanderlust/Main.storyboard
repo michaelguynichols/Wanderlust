@@ -230,10 +230,6 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Oja-gn-nBa">
-                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </activityIndicatorView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7c-TR-YSM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
@@ -281,18 +277,24 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Oja-gn-nBa">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.23319261863692486" green="0.54565221504982464" blue="0.58147885101010099" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="J7c-TR-YSM" firstAttribute="top" secondItem="wtr-Vy-mzg" secondAttribute="top" id="6gO-oi-s3D"/>
                             <constraint firstItem="nV9-7i-Bln" firstAttribute="trailing" secondItem="J7c-TR-YSM" secondAttribute="trailing" id="8IX-PD-VH6"/>
                             <constraint firstItem="2pt-12-Em0" firstAttribute="centerX" secondItem="tkM-Pn-Z6I" secondAttribute="centerX" id="9cn-LK-WjC"/>
+                            <constraint firstItem="Oja-gn-nBa" firstAttribute="centerX" secondItem="tkM-Pn-Z6I" secondAttribute="centerX" id="BQe-Nm-Ypk"/>
                             <constraint firstItem="nV9-7i-Bln" firstAttribute="leading" secondItem="J7c-TR-YSM" secondAttribute="leading" id="DCo-lI-R8y"/>
                             <constraint firstItem="yJZ-mE-kNZ" firstAttribute="top" secondItem="67q-1B-C8E" secondAttribute="bottom" constant="7" id="HVj-gm-itv"/>
                             <constraint firstItem="yJZ-mE-kNZ" firstAttribute="trailing" secondItem="67q-1B-C8E" secondAttribute="trailing" id="MU5-In-mbZ"/>
                             <constraint firstItem="fvx-Yg-FET" firstAttribute="leading" secondItem="wtr-Vy-mzg" secondAttribute="leadingMargin" constant="84" id="Pff-3i-RTw"/>
                             <constraint firstItem="2pt-12-Em0" firstAttribute="leading" secondItem="yJZ-mE-kNZ" secondAttribute="leading" id="Qxz-cW-csS"/>
                             <constraint firstItem="tkM-Pn-Z6I" firstAttribute="top" secondItem="2pt-12-Em0" secondAttribute="bottom" constant="3" id="X2O-eB-ved"/>
+                            <constraint firstItem="Oja-gn-nBa" firstAttribute="centerY" secondItem="tkM-Pn-Z6I" secondAttribute="centerY" id="Xvn-r0-iNe"/>
                             <constraint firstItem="fvx-Yg-FET" firstAttribute="top" secondItem="yJZ-mE-kNZ" secondAttribute="bottom" constant="46" id="Zly-LQ-UkL"/>
                             <constraint firstAttribute="trailing" secondItem="nV9-7i-Bln" secondAttribute="trailing" id="bBe-uI-d8k"/>
                             <constraint firstItem="tkM-Pn-Z6I" firstAttribute="top" secondItem="wtr-Vy-mzg" secondAttribute="top" constant="107" id="bO3-XF-MAM"/>
@@ -301,10 +303,8 @@
                             <constraint firstItem="nV9-7i-Bln" firstAttribute="leading" secondItem="wtr-Vy-mzg" secondAttribute="leading" id="jJG-s8-Tp3"/>
                             <constraint firstItem="67q-1B-C8E" firstAttribute="leading" secondItem="wtr-Vy-mzg" secondAttribute="leadingMargin" id="kKE-yv-82D"/>
                             <constraint firstItem="AMV-br-7kQ" firstAttribute="top" secondItem="fvx-Yg-FET" secondAttribute="bottom" constant="8" symbolic="YES" id="pKo-El-330"/>
-                            <constraint firstItem="Oja-gn-nBa" firstAttribute="top" secondItem="67q-1B-C8E" secondAttribute="bottom" constant="8" symbolic="YES" id="ppZ-Gt-wzi"/>
                             <constraint firstItem="2pt-12-Em0" firstAttribute="centerX" secondItem="J7c-TR-YSM" secondAttribute="centerX" id="qYe-Of-hpe"/>
                             <constraint firstItem="nV9-7i-Bln" firstAttribute="top" secondItem="tkM-Pn-Z6I" secondAttribute="bottom" constant="8" symbolic="YES" id="rxZ-iE-PPM"/>
-                            <constraint firstItem="yJZ-mE-kNZ" firstAttribute="centerX" secondItem="Oja-gn-nBa" secondAttribute="centerX" id="stV-iM-ptH"/>
                             <constraint firstItem="fvx-Yg-FET" firstAttribute="centerX" secondItem="J7c-TR-YSM" secondAttribute="centerX" id="uPb-AK-BSR"/>
                             <constraint firstItem="2pt-12-Em0" firstAttribute="trailing" secondItem="67q-1B-C8E" secondAttribute="trailing" id="zEx-0K-Pd5"/>
                         </constraints>
@@ -314,10 +314,10 @@
                                 <exclude reference="yJZ-mE-kNZ"/>
                                 <exclude reference="tkM-Pn-Z6I"/>
                                 <exclude reference="2pt-12-Em0"/>
-                                <exclude reference="Oja-gn-nBa"/>
                                 <exclude reference="J7c-TR-YSM"/>
                                 <exclude reference="fvx-Yg-FET"/>
                                 <exclude reference="67q-1B-C8E"/>
+                                <exclude reference="Oja-gn-nBa"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="6gO-oi-s3D"/>
@@ -334,11 +334,11 @@
                                 <exclude reference="bBe-uI-d8k"/>
                                 <exclude reference="jJG-s8-Tp3"/>
                                 <exclude reference="rxZ-iE-PPM"/>
+                                <exclude reference="BQe-Nm-Ypk"/>
+                                <exclude reference="Xvn-r0-iNe"/>
                                 <exclude reference="kKE-yv-82D"/>
                                 <exclude reference="HVj-gm-itv"/>
                                 <exclude reference="MU5-In-mbZ"/>
-                                <exclude reference="stV-iM-ptH"/>
-                                <exclude reference="ppZ-Gt-wzi"/>
                                 <exclude reference="Pff-3i-RTw"/>
                                 <exclude reference="Zly-LQ-UkL"/>
                                 <exclude reference="uPb-AK-BSR"/>
@@ -351,10 +351,10 @@
                                 <include reference="yJZ-mE-kNZ"/>
                                 <include reference="tkM-Pn-Z6I"/>
                                 <include reference="2pt-12-Em0"/>
-                                <include reference="Oja-gn-nBa"/>
                                 <include reference="J7c-TR-YSM"/>
                                 <include reference="fvx-Yg-FET"/>
                                 <include reference="67q-1B-C8E"/>
+                                <include reference="Oja-gn-nBa"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="6gO-oi-s3D"/>
@@ -371,11 +371,11 @@
                                 <include reference="bBe-uI-d8k"/>
                                 <include reference="jJG-s8-Tp3"/>
                                 <include reference="rxZ-iE-PPM"/>
+                                <include reference="BQe-Nm-Ypk"/>
+                                <include reference="Xvn-r0-iNe"/>
                                 <include reference="kKE-yv-82D"/>
                                 <include reference="HVj-gm-itv"/>
                                 <include reference="MU5-In-mbZ"/>
-                                <include reference="stV-iM-ptH"/>
-                                <include reference="ppZ-Gt-wzi"/>
                                 <include reference="Pff-3i-RTw"/>
                                 <include reference="Zly-LQ-UkL"/>
                                 <include reference="uPb-AK-BSR"/>
