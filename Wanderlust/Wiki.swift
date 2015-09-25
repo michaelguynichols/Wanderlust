@@ -132,6 +132,10 @@ class Wiki {
             joinedCountryName = "Saint%20Barthelemy"
         } else if country == "Reunion" {
             joinedCountryName = "France"
+        } else if country == "Pitcairn" {
+            joinedCountryName = "Pitcairn%20Islands"
+        } else if country == "Saint Pierre and Miquelon" {
+            joinedCountryName = "Saint-Pierre%20and%20Miquelon"
         }
         
         return joinedCountryName
