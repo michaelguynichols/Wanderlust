@@ -48,16 +48,16 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Msa-b5-gNq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleAspectFit" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="CountryCell" textLabel="vih-8y-j3u" rowHeight="45" style="IBUITableViewCellStyleDefault" id="YhX-VN-zce" customClass="CountryTableCell" customModule="Wanderlust" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86" width="600" height="45"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" tableViewCell="YhX-VN-zce" id="6ar-di-qob">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vih-8y-j3u">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -68,6 +68,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -320,29 +321,29 @@
                                 <exclude reference="Oja-gn-nBa"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="6gO-oi-s3D"/>
                                 <exclude reference="9cn-LK-WjC"/>
                                 <exclude reference="Qxz-cW-csS"/>
                                 <exclude reference="baK-XR-Mac"/>
                                 <exclude reference="qYe-Of-hpe"/>
                                 <exclude reference="zEx-0K-Pd5"/>
-                                <exclude reference="X2O-eB-ved"/>
-                                <exclude reference="bO3-XF-MAM"/>
-                                <exclude reference="ieL-Ep-GCm"/>
+                                <exclude reference="kKE-yv-82D"/>
                                 <exclude reference="8IX-PD-VH6"/>
                                 <exclude reference="DCo-lI-R8y"/>
                                 <exclude reference="bBe-uI-d8k"/>
                                 <exclude reference="jJG-s8-Tp3"/>
                                 <exclude reference="rxZ-iE-PPM"/>
-                                <exclude reference="BQe-Nm-Ypk"/>
-                                <exclude reference="Xvn-r0-iNe"/>
-                                <exclude reference="kKE-yv-82D"/>
                                 <exclude reference="HVj-gm-itv"/>
                                 <exclude reference="MU5-In-mbZ"/>
+                                <exclude reference="BQe-Nm-Ypk"/>
+                                <exclude reference="Xvn-r0-iNe"/>
                                 <exclude reference="Pff-3i-RTw"/>
                                 <exclude reference="Zly-LQ-UkL"/>
                                 <exclude reference="uPb-AK-BSR"/>
                                 <exclude reference="pKo-El-330"/>
+                                <exclude reference="6gO-oi-s3D"/>
+                                <exclude reference="X2O-eB-ved"/>
+                                <exclude reference="bO3-XF-MAM"/>
+                                <exclude reference="ieL-Ep-GCm"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -357,29 +358,29 @@
                                 <include reference="Oja-gn-nBa"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="6gO-oi-s3D"/>
                                 <include reference="9cn-LK-WjC"/>
                                 <include reference="Qxz-cW-csS"/>
                                 <include reference="baK-XR-Mac"/>
                                 <include reference="qYe-Of-hpe"/>
                                 <include reference="zEx-0K-Pd5"/>
-                                <include reference="X2O-eB-ved"/>
-                                <include reference="bO3-XF-MAM"/>
-                                <include reference="ieL-Ep-GCm"/>
+                                <include reference="kKE-yv-82D"/>
                                 <include reference="8IX-PD-VH6"/>
                                 <include reference="DCo-lI-R8y"/>
                                 <include reference="bBe-uI-d8k"/>
                                 <include reference="jJG-s8-Tp3"/>
                                 <include reference="rxZ-iE-PPM"/>
-                                <include reference="BQe-Nm-Ypk"/>
-                                <include reference="Xvn-r0-iNe"/>
-                                <include reference="kKE-yv-82D"/>
                                 <include reference="HVj-gm-itv"/>
                                 <include reference="MU5-In-mbZ"/>
+                                <include reference="BQe-Nm-Ypk"/>
+                                <include reference="Xvn-r0-iNe"/>
                                 <include reference="Pff-3i-RTw"/>
                                 <include reference="Zly-LQ-UkL"/>
                                 <include reference="uPb-AK-BSR"/>
                                 <include reference="pKo-El-330"/>
+                                <include reference="6gO-oi-s3D"/>
+                                <include reference="X2O-eB-ved"/>
+                                <include reference="bO3-XF-MAM"/>
+                                <include reference="ieL-Ep-GCm"/>
                             </mask>
                         </variation>
                     </view>

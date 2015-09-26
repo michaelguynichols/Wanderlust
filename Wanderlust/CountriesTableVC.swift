@@ -40,6 +40,7 @@ class CountriesTableVC: UITableViewController, NSFetchedResultsControllerDelegat
         
         // Changing the separator color
         tableView.separatorColor = UIColor.init(red: 59/256, green: 139/256, blue: 148/256, alpha: 1.0)
+        tableView.backgroundColor = UIColor.whiteColor()
         
     }
     
