@@ -19,7 +19,6 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
     @IBOutlet weak var yearOfData: UILabel!
     @IBOutlet weak var activity: UIActivityIndicatorView!
     var country: Country?
-    var networkAccess = false
     
     let pickerData = WorldBank.INDICATORS.QUERY_CHOICES
     
@@ -32,9 +31,6 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
         
         // Hiding the activity indicator
         activity.hidden = true
-        
-        // Checking for network access
-        networkAccess = Connectivity.isConnectedToNetwork()
         
         // Grabbing the chosen country
         let object = UIApplication.sharedApplication().delegate
@@ -172,7 +168,7 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
             queryResult.text = WorldBank.COUNTRIES.DATA[self.country!.countryName]!["Capital"]!
             
         } else {
-            if networkAccess {
+            if Connectivity.isConnectedToNetwork() {
                 getDataFromWorldBank()
             } else {
                 let alert = UIAlertController(title: "No Network Access", message: "To obtain data from the Worldbank, you need to have a network connection. Please connect to a network and try again.", preferredStyle: .Alert)
@@ -219,13 +215,32 @@ class DataPickerController: UIViewController, UIPickerViewDataSource,UIPickerVie
     
     // Segue to wiki webview.
     @IBAction func toWiki(sender: UIButton) {
-        self.performSegueWithIdentifier("toWikiVC", sender: self)
-    }
+        if Connectivity.isConnectedToNetwork() {
+            self.performSegueWithIdentifier("toWikiVC", sender: self)
+        } else {
+            let alert = UIAlertController(title: "No Network Access", message: "To obtain data from the Worldbank, you need to have a network connection. Please connect to a network and try again.", preferredStyle: .Alert)
     
+            let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
+            alert.addAction(cancel)
+    
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+
     // Refresh data from Worldbank.
     @IBAction func refreshData(sender: UIBarButtonItem) {
-        deleteCountryData(country!)
-        getDataFromWorldBank()
+        if Connectivity.isConnectedToNetwork() {
+            deleteCountryData(country!)
+            getDataFromWorldBank()
+        } else {
+            let alert = UIAlertController(title: "No Network Access", message: "To obtain data from the Worldbank, you need to have a network connection. Please connect to a network and try again.", preferredStyle: .Alert)
+            
+            let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: {(action) -> Void in})
+            alert.addAction(cancel)
+            
+            presentViewController(alert, animated: true, completion: nil)
+        }
+
     }
     
     @IBAction func dismissView(sender: UIBarButtonItem) {
